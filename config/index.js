@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-01-09 22:58:11
- * @LastEditTime : 2020-01-10 12:03:12
- * @LastEditors  : Please set LastEditors
+ * @LastEditTime: 2020-04-10 09:53:56
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/config/index.js
  */
@@ -75,6 +75,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    esnextModules: ['taro-ui'],
     postcss: {
       autoprefixer: {
         enable: true,
