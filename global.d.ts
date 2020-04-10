@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-01-09 22:58:11
+ * @LastEditTime: 2020-04-10 16:57:59
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /taro-music-redux/global.d.ts
+ */
 declare module "*.png";
 declare module "*.gif";
 declare module "*.jpg";

@@ -2,7 +2,7 @@ import Taro, { useCallback, memo } from '@tarojs/taro';
 import { View, Button, Text } from '@tarojs/components'
 import { useSelector, useDispatch } from '@tarojs/redux'
 
-import { add, minus, asyncAdd } from '../../actions/counter';
+import SearchBar from '../../components/SearchBar';
 import TabBar from '../../components/TabBar';
 
 import './index.scss'
@@ -40,32 +40,21 @@ interface Index {
 
 function Index() {
 
-    const counter = useSelector((state: PageStateProps) => state.counter);
-    
-    const dispatch = useDispatch();
-
-    const addClick = useCallback(() => {
-        dispatch(add())
-    }, [dispatch])
-
-    const decClick = useCallback(() => {
-        dispatch(minus())
-    }, [dispatch])
-
-    const asyncAddClick = useCallback(() => {
-        dispatch(asyncAdd())
-    }, [dispatch])
+    const goSearch = () => {
+        console.log( '跳转搜索！' )
+    }
 
     return (
         <View className='index'>
-            <Button className='add_btn' onClick={addClick}>+</Button>
-            <Button className='dec_btn' onClick={decClick}>-</Button>
-            <Button className='dec_btn' onClick={asyncAddClick}>async</Button>
-            <View><Text>{counter.num}</Text></View>
-            <View><Text>Hello, World</Text></View>
+            <View onClick={goSearch}>
+                <SearchBar
+                    disabled
+                    onClick={goSearch}
+                ></SearchBar>
+            </View>
             {/* <Loading show></Loading> */}
             <TabBar
-              pageCurrent={0}
+                pageCurrent={0}
             ></TabBar>
         </View>
     )

@@ -13,4 +13,8 @@ function Index() {
     )
 }
 
+Index.config = {
+    navigationBarTitleText: '我的'
+}
+
 export default Index;

@@ -13,4 +13,8 @@ function Index() {
     )
 }
 
+Index.config = {
+    navigationBarTitleText: '排行'  
+}
+
 export default Index;
