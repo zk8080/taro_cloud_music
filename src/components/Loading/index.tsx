@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-09 14:45:22
- * @LastEditTime: 2020-04-10 15:00:45
+ * @LastEditTime: 2020-04-11 22:32:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/src/components/Loading/loading.ts
@@ -12,16 +12,16 @@ import classnames from 'classnames';
 import './index.scss';
 
 type Props = {
-    show: boolean
+    hide: boolean
 }
 
 function Loading(props: Props): any {
 
-    const {show} = props;
+    const {hide} = props;
 
     const loadingCls = classnames({
         loadingWrapper: true,
-        show: show
+        hide: hide
     })
     return (
         <View className={loadingCls}>

@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-01-09 22:58:11
- * @LastEditTime: 2020-04-09 13:55:34
- * @LastEditors: your name
+ * @LastEditTime: 2020-04-11 22:17:31
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/src/store/index.ts
  */
@@ -34,3 +34,4 @@ export default function configStore() {
     const store = createStore(rootReducer, enhancer)
     return store
 }
+export type AppState = ReturnType<typeof rootReducer>;

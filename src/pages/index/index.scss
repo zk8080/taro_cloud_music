@@ -1,4 +1,14 @@
-.index {
-  flex-direction: column;
-  width: 100%;
+.home {
+    flex-direction: column;
+    width: 100%;
+    .banner_list{
+        height: 375px;
+        .banner_item_img{
+            width: 92%;
+            height: 375px;
+            position: relative;
+            left: 4%;
+            border-radius: 20px;
+        }
+    }
 }

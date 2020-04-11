@@ -1,11 +1,14 @@
-import Taro, { useCallback, memo } from '@tarojs/taro';
-import { View, Button, Text } from '@tarojs/components'
-import { useSelector, useDispatch } from '@tarojs/redux'
-
+import Taro, { useCallback, memo, useEffect } from '@tarojs/taro';
+import { View, Button, Text, Swiper, SwiperItem, Image } from '@tarojs/components'
+import { useSelector, useDispatch } from '@tarojs/redux';
+import {AppState} from '../../store';
+import { HomeStateType } from '../../commonType';
 import SearchBar from '../../components/SearchBar';
 import TabBar from '../../components/TabBar';
-
+import Loading from '../../components/Loading';
 import './index.scss'
+import { getBannerList } from '../../actions/home';
+
 
 
 // #region 书写注意
@@ -40,19 +43,50 @@ interface Index {
 
 function Index() {
 
+    const { bannerList, loading } = useSelector((state: AppState): HomeStateType => state.home)
+
+    const dispatch = useDispatch();
+
+    const getBannerListDispatch = useCallback(() => {
+        return dispatch(getBannerList())
+    }, [dispatch])
+
     const goSearch = () => {
-        console.log( '跳转搜索！' )
+        console.log('跳转搜索！')
     }
 
+    useEffect(() => {
+        getBannerListDispatch();
+    }, [getBannerListDispatch])
+    
     return (
-        <View className='index'>
+        <View className='home'>
             <View onClick={goSearch}>
                 <SearchBar
                     disabled
                     onClick={goSearch}
                 ></SearchBar>
             </View>
-            {/* <Loading show></Loading> */}
+            <Swiper
+                className='banner_list'
+                indicatorColor='#999'
+                indicatorActiveColor='#d44439'
+                circular
+                indicatorDots
+                autoplay
+            >
+                {
+                    bannerList.map((item) => {
+                        return (
+                            <SwiperItem key={item.targetId}>
+                                <Image className='banner_item_img' src={item.imageUrl} />
+                            </SwiperItem>
+                        )
+                    })
+                    
+                }
+            </Swiper>
+            <Loading hide={!loading}></Loading>
             <TabBar
                 pageCurrent={0}
             ></TabBar>
