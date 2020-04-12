@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-11 21:52:56
- * @LastEditTime: 2020-04-11 21:54:36
+ * @LastEditTime: 2020-04-12 22:50:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/src/commonType.d.ts
@@ -16,6 +16,7 @@ export interface recommendType {
     picUrl: string;
     trackCount: number;
     playCount: number;
+    id: string | number | undefined;
 }
 
 export interface HomeStateType {

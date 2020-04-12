@@ -1,13 +1,14 @@
 import Taro, { useCallback, memo, useEffect } from '@tarojs/taro';
-import { View, Button, Text, Swiper, SwiperItem, Image } from '@tarojs/components'
+import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components'
 import { useSelector, useDispatch } from '@tarojs/redux';
 import {AppState} from '../../store';
 import { HomeStateType } from '../../commonType';
 import SearchBar from '../../components/SearchBar';
 import TabBar from '../../components/TabBar';
 import Loading from '../../components/Loading';
+import RecommendList from '../../components/RecommendList';
 import './index.scss'
-import { getBannerList } from '../../actions/home';
+import { getBannerList, getRecommendList } from '../../actions/home';
 
 
 
@@ -43,12 +44,16 @@ interface Index {
 
 function Index() {
 
-    const { bannerList, loading } = useSelector((state: AppState): HomeStateType => state.home)
+    const { bannerList, loading, recommendList } = useSelector((state: AppState): HomeStateType => state.home)
 
     const dispatch = useDispatch();
 
     const getBannerListDispatch = useCallback(() => {
         return dispatch(getBannerList())
+    }, [dispatch]);
+
+    const getRecommendListDispatch = useCallback(() => {
+        return dispatch(getRecommendList())
     }, [dispatch])
 
     const goSearch = () => {
@@ -57,7 +62,9 @@ function Index() {
 
     useEffect(() => {
         getBannerListDispatch();
-    }, [getBannerListDispatch])
+        getRecommendListDispatch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     
     return (
         <View className='home'>
@@ -86,6 +93,12 @@ function Index() {
                     
                 }
             </Swiper>
+            <View className='title'>
+                <Text>推荐歌单</Text>
+            </View>
+            <RecommendList 
+                recommendList={recommendList}
+            ></RecommendList>
             <Loading hide={!loading}></Loading>
             <TabBar
                 pageCurrent={0}

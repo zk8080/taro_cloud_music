@@ -1,6 +1,8 @@
+@import '../../common.scss';
 .home {
     flex-direction: column;
     width: 100%;
+    padding-bottom: 130px;
     .banner_list{
         height: 375px;
         .banner_item_img{
@@ -9,6 +11,13 @@
             position: relative;
             left: 4%;
             border-radius: 20px;
+        }
+    }
+    .title{
+        margin: 2% 0;
+        padding-left: 2%;
+        text{
+            font-size: $font-size-ll;
         }
     }
 }
