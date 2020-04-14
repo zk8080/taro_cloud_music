@@ -1,6 +1,5 @@
 import Taro, { memo } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
-import { AtIcon } from 'taro-ui'
 import './index.scss';
 
 interface RecommendType {
@@ -15,7 +14,7 @@ type Props = {
 }
 
 function List(props: Props) {
-    const { recommendList } = props;
+    const { recommendList = [] } = props;
 
     return (
         <View className='list_content'>
@@ -23,7 +22,7 @@ function List(props: Props) {
                 recommendList.map((item) => {
                     return (
                         <View className='list_item' key={item.id}>
-                            <View></View>
+                            <View className='decorate'></View>
                             <Image src={item.picUrl + '?param=300x300'}></Image>
                             <View className='list_play'>
                                 <View className='at-icon at-icon-sound'></View>

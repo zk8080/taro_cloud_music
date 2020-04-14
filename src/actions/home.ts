@@ -1,23 +1,21 @@
 /*
  * @Author: your name
  * @Date: 2020-01-09 22:58:11
- * @LastEditTime: 2020-04-12 22:17:20
+ * @LastEditTime: 2020-04-13 23:12:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/src/actions/home.ts
  */
-import { CHANGE_BANNER, CHANGE_LOADING, CHNAGE_RECOMMEND } from '../constants/home';
+import { CHANGE_BANNER, CHNAGE_RECOMMEND } from '../constants/home';
 import { getBannerRequest, getRecommendListRequest } from '../api/request';
 import { HomeStateType } from '../commonType';
+import { changeLoading } from './loading';
+
 
 // eslint-disable-next-line @typescript-eslint/class-name-casing
 export interface changeBannerType {
     type: typeof CHANGE_BANNER,
     data: HomeStateType
-}
-export interface changeLoadingType {
-    type: typeof CHANGE_LOADING,
-    data: boolean
 }
 
 export interface changeRecommendListType {
@@ -30,10 +28,6 @@ export const changeBanner = (data: HomeStateType): changeBannerType => ({
     data
 })
 
-export const changeLoading = (data: boolean): changeLoadingType => ({
-    type: CHANGE_LOADING,
-    data
-})
 
 export const changeRecommendList = (data: HomeStateType): changeRecommendListType => ({
     type: CHNAGE_RECOMMEND,
@@ -42,10 +36,11 @@ export const changeRecommendList = (data: HomeStateType): changeRecommendListTyp
 
 export const getBannerList = () => {
     return async (dispatch) => {
+        dispatch(changeLoading(true));
         const res: any = await getBannerRequest();
         try{
             dispatch(changeBanner(res.data.banners));
-            dispatch(changeLoading(false))
+            dispatch(changeLoading(false));
         }catch(e){
             console.log(e)
         }
@@ -54,10 +49,11 @@ export const getBannerList = () => {
 
 export const getRecommendList = () => {
     return async (dispatch) => {
+        dispatch(changeLoading(true));
         const res: any = await getRecommendListRequest();
         try{
             dispatch(changeRecommendList(res.data.result));
-            dispatch(changeLoading(false))
+            dispatch(changeLoading(false));
         }catch(e){
             console.log(e);
         }

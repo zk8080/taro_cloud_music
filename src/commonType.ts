@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-11 21:52:56
- * @LastEditTime: 2020-04-12 22:50:23
+ * @LastEditTime: 2020-04-13 17:52:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/src/commonType.d.ts
@@ -21,6 +21,9 @@ export interface recommendType {
 
 export interface HomeStateType {
     bannerList: bannerType[];
-    recommendList: recommendType[];
-    loading: boolean;
+    recommendList: recommendType[]
+}
+
+export interface LoadingStateType {
+    loading: boolean
 }

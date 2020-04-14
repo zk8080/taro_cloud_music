@@ -1,26 +1,31 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 15:06:22
- * @LastEditTime: 2020-04-10 15:56:23
- * @LastEditors: your name
+ * @LastEditTime: 2020-04-13 23:12:21
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/src/api/config.ts
  */
 import Taro from '@tarojs/taro';
+import configStore from '../store';
+import { changeLoading } from '../actions/loading';
 
 const baseUrl = 'http://localhost:8000';
 
-function interceptor (chain: any) {
+function interceptor(chain: any) {
     const requestParams = chain.requestParams
     const { url } = requestParams
-  
+    // const { dispatch } = configStore();
+    // dispatch(changeLoading(true));
     // console.log(`http ${method || 'GET'} --> ${url} data: `, data)
     const newUrl = url.indexOf('http') !== -1 ? url : baseUrl + url
-    return chain.proceed({...requestParams, url: newUrl})
-      .then(res => {
-        // console.log(`http <-- ${url} result:`, res)
-        return res
-      })
+    return chain.proceed({ ...requestParams, url: newUrl })
+            .then(res => {
+                // console.log(`http <-- ${url} result:`, res)
+                
+                return res
+            })
+    
 }
 
 Taro.addInterceptor(interceptor);

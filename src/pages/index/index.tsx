@@ -1,8 +1,8 @@
 import Taro, { useCallback, memo, useEffect } from '@tarojs/taro';
 import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components'
 import { useSelector, useDispatch } from '@tarojs/redux';
-import {AppState} from '../../store';
-import { HomeStateType } from '../../commonType';
+import { AppState } from '../../store';
+import { HomeStateType, LoadingStateType } from '../../commonType';
 import SearchBar from '../../components/SearchBar';
 import TabBar from '../../components/TabBar';
 import Loading from '../../components/Loading';
@@ -43,8 +43,8 @@ interface Index {
 }
 
 function Index() {
-
-    const { bannerList, loading, recommendList } = useSelector((state: AppState): HomeStateType => state.home)
+    const { loading } = useSelector((state: AppState): LoadingStateType => state.loading)
+    const { bannerList, recommendList } = useSelector((state: AppState): HomeStateType => state.home)
 
     const dispatch = useDispatch();
 
@@ -63,9 +63,8 @@ function Index() {
     useEffect(() => {
         getBannerListDispatch();
         getRecommendListDispatch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
     return (
         <View className='home'>
             <View onClick={goSearch}>
@@ -90,13 +89,13 @@ function Index() {
                             </SwiperItem>
                         )
                     })
-                    
+
                 }
             </Swiper>
             <View className='title'>
                 <Text>推荐歌单</Text>
             </View>
-            <RecommendList 
+            <RecommendList
                 recommendList={recommendList}
             ></RecommendList>
             <Loading hide={!loading}></Loading>

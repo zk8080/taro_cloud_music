@@ -8,6 +8,4 @@
  */
 export const CHANGE_BANNER = 'CHANGE_BANNER';
 
-export const CHANGE_LOADING = 'CHANG_LOADING';
-
 export const CHNAGE_RECOMMEND = 'CHNAGE_RECOMMEND';

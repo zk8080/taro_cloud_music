@@ -1,11 +1,11 @@
 import Taro from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import TabBar from '../../components/TabBar';
+import './index.scss';
 
 function Index() {
     return (
-        <View>
-            <Text>排行</Text>
+        <View className='rank'>
             <TabBar
               pageCurrent={1}
             ></TabBar>
