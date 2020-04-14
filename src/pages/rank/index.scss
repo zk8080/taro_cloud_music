@@ -1,3 +1,10 @@
+@import '../../common.scss';
 .rank{
-    
+    .title{
+        margin: 2% 0;
+        padding-left: 2%;
+        text{
+            font-size: $font-size-ll;
+        }
+    }
 }

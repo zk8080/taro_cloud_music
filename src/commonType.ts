@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-11 21:52:56
- * @LastEditTime: 2020-04-13 17:52:52
+ * @LastEditTime: 2020-04-14 17:19:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-music-redux/src/commonType.d.ts
@@ -26,4 +26,8 @@ export interface HomeStateType {
 
 export interface LoadingStateType {
     loading: boolean
+}
+
+export interface RankStateType {
+    rankList: []
 }
