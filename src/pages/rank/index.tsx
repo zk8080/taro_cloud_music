@@ -6,10 +6,11 @@ import './index.scss';
 import { AppState } from '../../store';
 import { getRankList } from '../../actions/rank';
 import { filterIndex } from '../../utils';
+import { RankStateType, RankType, TracksType } from '../../commonType';
 
 function Index() {
 
-    const { rankList } = useSelector((state: AppState) => state.rank)
+    const { rankList } = useSelector((state: AppState): RankStateType => state.rank)
 
     const dispatch = useDispatch();
 
@@ -26,11 +27,11 @@ function Index() {
     const globalArr = rankList.slice(globalStartIndex)
 
     // eslint-disable-next-line react/no-multi-comp
-    const renderSongList = (list = []) => {
+    const renderSongList = (list: TracksType[] ) => {
         return (
             <View className='song_list'>
                 {
-                    list.map((item: any, index) => {
+                    list.map((item: TracksType, index) => {
                         return (<View className='song_item' key={index}>
                         <Text>{index+1}. {item.first} - {item.second}</Text>
                     </View>)
@@ -48,11 +49,13 @@ function Index() {
                 </View>
                 <View className='official_content'>
                     {
-                       officialArr.map((item: any, index) => {
+                       officialArr.map((item: RankType) => {
                            return (
-                            <View className='official_item' key={index}>
+                            <View className='official_item' key={item.id}>
                                 <View className='official_img_wrapper'>
                                     <Image className='official_img' src={item.coverImgUrl}></Image>
+                                    <View className='decorate'></View>
+                                    <View className='updateFrequency'><Text>{item.updateFrequency}</Text></View>
                                 </View>
                                 {
                                     renderSongList(item.tracks)
@@ -69,11 +72,13 @@ function Index() {
                 </View>
                 <View className='global_content'>
                     {
-                        globalArr.map((item: any, index) => {
+                        globalArr.map((item: RankType) => {
                             return (
-                                <View className='global_item' key={index}>
+                                <View className='global_item' key={item.id}>
                                     <View className='global_img_wrapper'>
                                         <Image className='global_img' src={item.coverImgUrl}></Image>
+                                        <View className='decorate'></View>
+                                        <View className='updateFrequency'><Text>{item.updateFrequency}</Text></View>
                                     </View>
                                 </View>
                             )

@@ -16,6 +16,7 @@
             padding: 10px 0;
             border-bottom: 1px solid $border-color;
             .official_img_wrapper{
+                position: relative;
                 width: 180px;
                 height: 180px;
                 flex-shrink: 0;
@@ -53,6 +54,7 @@
         .global_item {
             margin-bottom: 12px;
             .global_img_wrapper{
+                position: relative;
                 width: 236px;
                 height: 236px;
                 .global_img{
@@ -61,6 +63,24 @@
                     border-radius: 6px;
                 }
             }
+        }
+    }
+    .decorate{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 75px;
+        border-radius: 6px;
+        background: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,43%,.4));
+    }
+    .updateFrequency{
+        position: absolute;
+        bottom: 6px;
+        left: 10px;
+        text{
+            font-size: $font-size-ss;
+            color: $font-color-light;
         }
     }
 }
